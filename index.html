@@ -20,6 +20,7 @@
             }
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/dynogrid.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -32,12 +33,10 @@
 	<div class="container">
 		<h1>News Template </h1>
 	</div>
-    <div class="render container">
-		
-    </div>
+    
 	
 	
-    <div class="pre container">
+    <div id="pre" class="pre container">
 		<div class="politics article"><h3>politics</h3><p>Former J & K high court chief justice BA Khan, too, agrees: "If Article 370 was abrogated, then technically and legally the foundation of Jammu and Kashmir's accession to India would cease to exist." However, former law minister and senior advocate Shanti Bhushan said it was a very tough question. "Under Article 368, Parliament does have power to amend the Constitution. But in view of the Supreme Court's ruling in the Kesvanand Bharti case, Parliament can't amend the basic structure of the Constitution". "Unless the question is referred to the Supreme Court and the court gives its opinion, it is very difficult to give a definite answer," Bhushan said. He added it would depend on whether Article 370 is part of basic structure or not. Both Justice Khan and Dhavan said Jammu and Kashmir acceded to India under certain conditions. External affairs, communication and defence were to be handled by India but all other issues were left to the state. But over the years, many central laws have been extended to the state by Presidential orders either by the consent of the state government, or by concurrence of the state government or in some cases by approval of the state legislature.</p></div>
 		<div class="politics article" ><h3>politics</h3><p>The nimble algorithm, called relational social image search, achieves high reliability without using computationally intensive object- or facial-recognition software.</p></div>
 		<div class="politics article" ><h3>politics</h3><p>A new algorithm designed at the University of Toronto has the power to profoundly change the way we find photos among the billions on social media sites such as Facebook and Flickr.</p></div>
@@ -69,11 +68,14 @@
 		<div class="sports article" ><h3>sports</h3><p>Capturing Smaug’s presence and the amazing detail in his design while accommodating the windows, doors and wing shape was quite a different experience for us,” Eric Saindon, visual effects supervisor of Weta Digital, said in a statement. "It was great to see Smaug brought to life, and he appears even larger in the film." In the new movie, Smaug calls Lonely Mountain home, where a treasure trove of gold awaits anyone who dares challenge his fiery guard. </p></div>
     </div> <!-- /container -->      
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-
         <script src="js/vendor/bootstrap.min.js"></script>
-
-        <script src="js/main.js"></script>
-
+        <script src="js/jquery.dynogrid.js"></script>
+		<script>
+			$(document).ready(function(){
+				$( "#pre" ).gridify();
+			});
+			
+		</script>
         
     </body>
 </html>

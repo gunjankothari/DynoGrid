@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Gunjan's custom styles
+   
+   var data = {
+   
+		'Developed By': 'Gunjan B Kothari',
+		'Date': '03-12-2013',
+		'Assignment_By': 'Meditab.com'
+   
+   };
+   ========================================================================== */
+ .base
+{
+	position: relative;
+	float: left;
+	border-collapse: collapse;
+}
+.grid-inner
+{
+	position: relative;
+	float: left;
+	height: 100%;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+	background: #ffffff;
+}
+.article
+{
+	position:relative;
+	float:left;	
+	padding:5px
+}
+.empty
+{
+	position:relative;
+	float:left;
+
+}
+.grid-container
+{
+	background: #EEEEEE;
+	padding: 0px;
+	width: 100%;
+	position: relative;
+	float: left;
+}

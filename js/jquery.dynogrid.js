@@ -9,8 +9,9 @@
    
    };
    ========================================================================== */
-   
-   $.fn.gridify = function() {
+	var grid_container='';
+	$.fn.gridify = function() {
+		grid_container =this;
 		$(this).parent().append('<div class="render"></div>');
 		var selects = $(this).find('.article');
 	
@@ -18,11 +19,14 @@
 		var i=0;
 		while(i<selects.length)
 		{
-			
-			selects.eq(i).append('<div class="grid-inner"></div>');
-			selects.eq(i).find('.grid-inner').append(selects.eq(i).find('.grid-inner').siblings());
+			if(selects.eq(i).find('.grid-inner').length==0)
+			{
+				selects.eq(i).append('<div class="grid-inner"></div>');
+				selects.eq(i).find('.grid-inner').append(selects.eq(i).find('.grid-inner').siblings());
+			}
 			i++;
 		}
+		
 		count=1;
 		var selects = $('.pre').find('.article');
 
@@ -60,7 +64,7 @@
 		var count =1;
 		while(selects.length >= 1 )
 		{
-			$('.render').append('<div id="grid-'+count+'" class="container" style="height:'+selects.eq(0).outerHeight(true)+'px"></div>');
+			$('.render').append('<div id="grid-'+count+'" class="grid_container" style="height:'+selects.eq(0).outerHeight(true)+'px; width:'+$(this).width()+'"></div>');
 			fillTheBox('grid-'+count,true);
 			var selects = $(this	).find('.article');
 			count++;
@@ -68,11 +72,39 @@
 		$(this).html('');
 		//End Arranging Grid
 		
-		/*var selects = $('.render').find('.article');
-		$(this).append(selects);*/
+		$(this).append($('.render').html());
+		$('.render').remove();
 				
 }
- 
+
+/*
+var resize_timer;
+$(window).resize(function(){
+	clearTimeout(resize_timer);
+	resize_timer = setTimeout(,500);
+});
+*/
+var id;
+$(window).resize(function() {
+    clearTimeout(id);
+    id = setTimeout(doneResizing, 500);
+});
+
+function doneResizing(){
+  $(grid_container).gridifyResize();
+}
+$.fn.gridifyResize = function() {
+	var selects = $(this).find('.article');
+	$(this).parent().append('<div class="render"></div>');
+	$('.render').append(selects);
+	$(this).html('');
+	
+	$(this).append($('.render').html());
+	$(this).find('.article').css('height', '');
+	$('.render').remove();
+	$(this).gridify();
+ }
+
 
    
 
@@ -112,7 +144,7 @@ function fillTheBox(container,flag)
 		}
 		else
 		{
-			cal_height = $('#'+container+'_'+count).height(true) - element.outerHeight(true);
+			cal_height = $('#'+container+'_'+count).height() - element.outerHeight(true);
 			cal_width = element.outerWidth(true);
 		}
 		
@@ -135,15 +167,7 @@ function fillTheBox(container,flag)
 		$('#'+container).siblings().outerHeight($('#'+container).parent('div').outerHeight(true));
 		$('#'+container).remove();
 	}
-	/*else
-	{
-		var adjust_width = $('#'+container+'>div').last().width()+empty.width;
-		$('#'+container+'>div').last().width(adjust_width);
-		
-		$('#'+container+'>div:nth-last-child(1) div').each(function(){
-				$(this).width(adjust_width-20);	
-		});		
-	}*/	
+	
 }
 
 //This function finds the best Fit Element from the given Div's
